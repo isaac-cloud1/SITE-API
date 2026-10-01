@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frete Moto | Calcule pelo CEP</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header class="topo">
+    <span class="logo">Frete Moto</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Quanto custa levar até você?</h1>
+      <p>Digite seu CEP e veja a distância desde a Uninassau Parangaba, o valor estimado do Uber Moto e o frete.</p>
+
+      <!-- 1. Formulário: o JavaScript lê o CEP e chama as APIs -->
+      <form id="form-cep" class="formulario">
+        <label for="cep">CEP de destino</label>
+        <input type="text" id="cep" name="cep" inputmode="numeric" placeholder="00000-000" maxlength="9" required>
+
+        <label for="numero">Número (opcional, melhora a precisão)</label>
+        <input type="text" id="numero" name="numero" inputmode="numeric" placeholder="Ex.: 123">
+
+        <button type="submit" id="botao" class="botao">Calcular frete</button>
+      </form>
+
+      <!-- 2. Mensagens de status (carregando, erro). aria-live avisa leitores de tela -->
+      <p id="status" class="status" aria-live="polite"></p>
+    </section>
+
+    <!-- 3. Resultado: começa escondido (atributo hidden) e aparece depois do cálculo -->
+    <section id="resultado" class="resultado" hidden>
+      <h2>Resultado</h2>
+      <p id="endereco" class="endereco"></p>
+
+      <dl class="dados">
+        <div><dt>Distância</dt><dd id="distancia"></dd></div>
+        <div><dt>Tempo estimado</dt><dd id="tempo"></dd></div>
+        <div><dt>Uber Moto (estimativa)</dt><dd id="uber"></dd></div>
+        <div class="total"><dt>Frete total</dt><dd id="frete"></dd></div>
+      </dl>
+
+      <p class="aviso">Valores estimados. O Uber não oferece API pública de preços, então usamos uma fórmula aproximada (base + km + minutos). O preço real varia com a demanda.</p>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Dados: ViaCEP, OpenStreetMap (Nominatim) e OSRM</p>
+  </footer>
+
+</body>
+</html>
